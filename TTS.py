@@ -8,7 +8,10 @@ from tensorflow_tts.inference import AutoConfig
 from tensorflow_tts.inference import TFAutoModel
 from tensorflow_tts.inference import AutoProcessor
 
+import zipfile
+
 def main():
+
   # initialize fastspeech model.
   fs_config = AutoConfig.from_pretrained('./examples/fastspeech/conf/fastspeech.v1.yaml')
   fastspeech = TFAutoModel.from_pretrained(
@@ -29,7 +32,11 @@ def main():
   processor = AutoProcessor.from_pretrained(pretrained_path="./test/files/ljspeech_mapper.json")
 
   # text to be converted
-  ids = processor.text_to_sequence("Hi boss, the current version of our TTS has been able to convert text into speech. I am still working on APIs for easier usage.")
+  #ids = processor.text_to_sequence("Hi boss, the current version of our TTS has been able to convert text into speech. I am still working on APIs for easier usage.")
+  with open('./Text.txt', 'r') as file:
+    data = file.read().replace('\n', '')
+
+  ids = processor.text_to_sequence(data)
   ids = tf.expand_dims(ids, 0)
   
   # fastspeech inference
@@ -45,7 +52,7 @@ def main():
 
   # save to file
   #sf.write('./audio_before.wav', audio_before, 22050, "PCM_16")
-  sf.write('./audio_after.wav', audio_after, 22050, "PCM_16")
+  sf.write('./speech.wav', audio_after, 22050, "PCM_16")
 
 if __name__=='__main__':
     main()
