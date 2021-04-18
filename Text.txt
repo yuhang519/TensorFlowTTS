@@ -1,0 +1,5 @@
+Hi boss, the current version of our "text to speech" application has been able to convert texts into a speech. 
+
+I am still working on the program interfaces. 
+
+Hope it will be easier to use.
