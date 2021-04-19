@@ -1,3 +1,5 @@
+## Instructions:
+
 1. Go to the directory 'TensorFlowTTS' and execute:
 ```bash
 $ pip install .
@@ -8,4 +10,4 @@ $ pip install .
 ```bash
 $ python TTS.py
 ```
-The speech file should be named as 'speech.wav' in 'TensorFlowTTS'.
+4. The generated speech file is named as 'speech.wav' in 'TensorFlowTTS'.
